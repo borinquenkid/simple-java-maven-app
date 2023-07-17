@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'mkdir target/coverage'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
@@ -22,7 +23,7 @@ pipeline {
                                         allowMissing: false,
                                         alwaysLinkToLastBuild: false,
                                         keepAll: true,
-                                        reportDir: 'coverage',
+                                        reportDir: 'target/coverage',
                                         reportFiles: 'index.html',
                                         reportName: "Junit Report"
                                 ])
